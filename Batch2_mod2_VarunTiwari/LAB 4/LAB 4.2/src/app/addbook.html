@@ -1,0 +1,71 @@
+<table border=4 class="table-striped col-sm-10" align="center">
+    
+    <tr class="table-striped" align="center" >
+     
+        <th>Book Id</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Year of Publish</th>
+        <th colspan="2" rowspan="2">Action</th>
+    </tr>
+
+    <tr>
+      <td align="center"><input type="text" [(ngModel)]="searchText" value="id" (keyup)="status=idcontrol.value; val='id'" placeholder="          Search ID" #idcontrol="ngModel" /></td>
+      <td align="center"><input type="text" [(ngModel)]="searchText1" value="title" (keyup)="status=titlecontrol.value; val='title'" placeholder="         Search Title" #titlecontrol="ngModel" /></td>
+      <td align="center"><input type="text" [(ngModel)]="searchText2" value="author" (keyup)="status=authorcontrol.value; val='author'" placeholder="        Search Author" #authorcontrol="ngModel" /></td>
+      <td align="center"><input type="text" [(ngModel)]="searchText3" value="year" (keyup)="status=yearcontrol.value; val='year'" placeholder="         Search Year" #yearcontrol="ngModel" /></td>
+    </tr>
+
+    <tr align="center" *ngFor="let em of bookAll | filter : val :status; let i = index">
+        <td>{{em.id}}</td>
+        <td>{{em.title}}</td>
+        <td>{{em.author}}</td>
+        <td>{{em.year}}</td>
+        <td><input type="button" class="btn btn-primary" value="UPDATE" (click)="putBook(i)"/></td>
+        <td><input type="button" class="btn btn-danger" value="DELETE" (click)="delete(i)"/></td>
+        </tr>
+</table><br><br>
+
+<h3 align="center">UPDATE BOOK</h3>
+<table border="2" class="table-striped col-sm-3" align="center">
+    <tr>
+        <td>
+          Id
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="uId"/> 
+        </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Title
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="uTitle" />
+      </td>
+  </tr>
+  <tr>
+      <td>
+        Author
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="uAuthor"/>
+      </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Year
+    </td>
+    <td>
+      <input type="text" [(ngModel)]="uYear"/>
+    </td>
+</tr>
+  <tr>
+      <td colspan="2" align="center">
+          <input type="button" class="btn btn-dark" value="Update Book Record" (click)="updateBook()" />
+      </td>
+  </tr>
+  
+</table>

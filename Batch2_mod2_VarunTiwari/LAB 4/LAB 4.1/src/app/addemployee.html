@@ -1,0 +1,63 @@
+<table border=4 class="table table-striped table-dark">
+    
+    <tr class="table-dark" align="center" >
+     
+        <th>Book Id</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Year of Publ.</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr align="center" *ngFor="let em of bookAll;let i = index">
+        <td>{{em.id}}</td>
+        <td>{{em.title}}</td>
+        <td>{{em.author}}</td>
+        <td>{{em.year}}</td>
+        <td><input type="button" class="btn btn-primary" value="UPDATE" (click)="putBook(i)"/></td>
+        <td><input type="button" class="btn btn-danger" value="DELETE" (click)="delete(i)"/></td>
+        </tr>
+</table><br>
+
+<h3>Update Book</h3>
+<table border="2" class="table table-striped col-sm-10" >
+    <tr>
+        <td>
+          Id
+        </td>
+        <td>
+          <input type="text"  [(ngModel)]="uId"/> 
+        </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Title
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="uTitle" />
+      </td>
+  </tr>
+  <tr>
+      <td>
+        Author
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="uAuthor"/>
+      </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Year
+    </td>
+    <td>
+      <input type="text" [(ngModel)]="uYear"/>
+    </td>
+</tr>
+  <tr>
+      <td colspan="2" align="center">
+          <input type="button" class="btn btn-dark" value="Update Book Record" (click)="updateBook()" />
+      </td>
+  </tr>
+  
+</table>

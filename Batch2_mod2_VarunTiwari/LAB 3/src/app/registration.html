@@ -1,0 +1,52 @@
+<h1>PRODUCTS</h1><br>
+<form #REGForm=ngForm (ngSubmit)="addData()">
+<table>
+    <tr>
+        <td>Product ID</td>
+        <td><input type="text" name="id" id="pid" [(ngModel)]="pId" #idControl="ngModel" required/></td>  
+        <span *ngIf="idControl.touched && idControl.invalid">*Product ID should be filled.</span>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td><input type="text" name="name" id="pname" [(ngModel)]="pName" #nameControl="ngModel" required/></td>
+        <span *ngIf="nameControl.touched && nameControl.invalid">*Product Name should be filled.</span>
+    </tr>
+    <tr>
+        <td>Product Cost</td>
+        <td><input type="text" name="cost" id="pcost" [(ngModel)]="pCost" #costControl="ngModel" required/></td>
+        <span *ngIf="costControl.touched && costControl.invalid">*Product Cost should be filled.</span>
+    </tr>
+    <tr>
+        <td>Product Online</td>
+        <td><input type="radio" name="online" id="on1" [(ngModel)]="pOnline" value="Yes" #onlineControl="ngModel" required />Yes
+            <input type="radio" name="online" id="on2" [(ngModel)]="pOnline" value="No" #onlineControl="ngModel" required />No
+        </td>
+        <span *ngIf="onlineControl.touched && onlineControl.invalid">*This field should be filled.</span>
+    </tr>
+    <tr>
+        <td>Product Category</td>
+        <td><select [(ngModel)]="pCategory" name="category" id="cat" #categoryControl="ngModel" required >
+            <option value="grocery">Grocery</option>
+            <option value="mobile">Mobile</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothes">Clothes</option>
+        </select></td>
+        <span *ngIf="categoryControl.touched && categoryControl.invalid">*This field should be filled.</span>
+    </tr>
+    <tr>
+            <td>Available in Store</td>
+            <td><input type="checkbox" name="checkbox" id="ch1" [(ngModel)]="pAvl" #avlControl="ngModel" required/>Big Bazar
+                <input type="checkbox" name="checkbox2" id="ch2" [(ngModel)]="pAv2" #avlControl1="ngModel" required/>D-Mart
+                <input type="checkbox" name="checkbox3" id="ch3" [(ngModel)]="pAv3" #avlControl2="ngModel" required/>Reliance
+                <input type="checkbox" name="checkbox4" id="ch4" [(ngModel)]="pAv4" #avlControl3="ngModel" required/>Spencers
+            </td>
+            <span *ngIf="(avlControl.touched || avlControl1.touched)&&(avlControl2.touched || avlControl3.touched)">*This field should be filled.</span>
+        </tr>
+
+
+
+    <tr>
+        <td><input type="submit" value="ADD EMPLOYEE" [disabled]="REGForm.invalid" /></td>
+    </tr>
+</table>
+</form>

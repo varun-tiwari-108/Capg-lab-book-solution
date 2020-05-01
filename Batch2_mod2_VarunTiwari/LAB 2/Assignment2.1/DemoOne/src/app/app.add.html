@@ -1,0 +1,88 @@
+<form #empForm=ngForm (ngSubmit)="addData()" >
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Id</label>
+            <input type="text" class="form-control" id="eid" aria-describedby="idHelp" placeholder="Enter ID" name="eid" [(ngModel)]="empId" #idcontrol="ngModel" required>
+            <small id="idHelp" class="alert alert-warning" *ngIf="idcontrol.touched && idcontrol.invalid">ID should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempName">Employee Name</label>
+            <input type="text" class="form-control" id="ename" aria-describedby="nameHelp" placeholder="Enter Name" name="ename" [(ngModel)]="empName" #namecontrol="ngModel" required>
+            <small id="nameHelp" class="alert alert-warning" *ngIf="namecontrol.touched && namecontrol.invalid">Name should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Salary</label>
+            <input type="text" class="form-control" id="esalary" aria-describedby="salaryHelp" placeholder="Enter Salary" name="esalary" [(ngModel)]="empSalary" #salcontrol="ngModel" required>
+            <small id="salaryHelp" class="alert alert-warning" *ngIf="salcontrol.touched && salcontrol.invalid">Salary should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Department</label>
+            <input type="text" class="form-control" id="edepartment" aria-describedby="departmentHelp" placeholder="Enter Department" name="edepartment" [(ngModel)]="empDept" #deptcontrol="ngModel" required>
+            <small id="departmentHelp" class="alert alert-warning" *ngIf="deptcontrol.touched && deptcontrol.invalid">Department should be filled</small>
+    </div>
+
+<div> <input type ="submit" class="btn btn-primary" value ="ADD DATA" [disabled]="empForm.invalid" (click)="addEmployee()"/></div>
+
+</form>
+
+
+
+<br>
+
+<h2>Show All Employee</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Employee Salary</th>
+        <th scope="col"> Department</th>
+        <th scope="col" style="text-align: center;"colspan="2">Action</th>
+    </tr>
+</thead>
+    <tr *ngFor="let data of empAll,let i=index">
+        <td>{{data.empId}}</td>
+        <td>{{data.empName}}</td>
+        <td>{{data.empSalary}}</td>
+        <td>{{data.empDept}}</td>
+        <td><input type="button" class="btn btn-danger" value="DELETE" (click)="deleteEmployee(i)"/></td>
+        <td><input type="button"  class="btn btn-success" value="UPDATE" (click)="Employee(i)"/></td>
+    </tr>
+</table>
+
+<br>
+
+<h2>Update Employee</h2>
+<form #empForm1=ngForm (ngSubmit)="addData()">
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Id</label>
+            <input type="text" class="form-control" id="eid" aria-describedby="idHelp" placeholder="Enter ID" name="eid" [(ngModel)]="empId1" #idcontrol1="ngModel" required>
+            <small id="idHelp" class="alert alert-warning" *ngIf="idcontrol1.touched && idcontrol1.invalid">ID should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempName">Employee Name</label>
+            <input type="text" class="form-control" id="ename" aria-describedby="nameHelp" placeholder="Enter Name" name="ename" [(ngModel)]="empName1" #namecontrol2="ngModel" required>
+            <small id="nameHelp" class="alert alert-warning" *ngIf="namecontrol2.touched && namecontrol2.invalid">Name should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Salary</label>
+            <input type="text" class="form-control" id="esalary" aria-describedby="salaryHelp" placeholder="Enter Salary" name="esalary" [(ngModel)]="empSalary1" #salcontrol2="ngModel" required>
+            <small id="salaryHelp" class="alert alert-warning" *ngIf="salcontrol2.touched && salcontrol2.invalid">Salary should be filled</small>
+    </div>
+
+    <div class="form-group">
+            <label for="exampleInputempid">Employee Department</label>
+            <input type="text" class="form-control" id="edepartment" aria-describedby="departmentHelp" placeholder="Enter Department" name="edepartment" [(ngModel)]="empDept1" #deptcontrol="ngModel" required>
+            <small id="departmentHelp" class="alert alert-warning" *ngIf="deptcontrol.touched && deptcontrol.invalid">Department should be filled</small>
+    </div>
+
+<div> <input type ="submit" class="btn btn-success" value ="UPDATE" [disabled]="empForm.invalid" (click)="updateEmployee()"/></div>
+
+</form>
